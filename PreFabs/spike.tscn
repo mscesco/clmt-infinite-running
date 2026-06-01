@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cl7fgvu2sq4c8"]
+
+[ext_resource type="Script" uid="uid://dq0jty137yseu" path="res://scripts/spike.gd" id="1_e8l06"]
+[ext_resource type="Texture2D" uid="uid://crh80wfvjcl43" path="res://sprites/Itens/spikes_row.png" id="1_pus4d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8l06"]
+size = Vector2(72, 11)
+
+[node name="Spike" type="Area2D" unique_id=109305717]
+script = ExtResource("1_e8l06")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1128398053]
+texture = ExtResource("1_pus4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=175245843]
+position = Vector2(3, 2.5)
+shape = SubResource("RectangleShape2D_e8l06")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=311211922]
+rect = Rect2(-10, -3, 20, 12)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=102266172]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=570629784]
+position = Vector2(3, 2.5)
+shape = SubResource("RectangleShape2D_e8l06")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
