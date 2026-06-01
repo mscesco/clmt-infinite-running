@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://dhp0h35btfrgg"]
+
+[ext_resource type="Script" uid="uid://bv3jvvx84i7y5" path="res://scripts/coin.gd" id="1_1e8qo"]
+[ext_resource type="Texture2D" uid="uid://gwrromx036f4" path="res://sprites/Itens/Coin/spinning-coin-spritesheet-clipart-xl.png" id="2_qemmx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ixm4b"]
+radius = 70.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_weq3x"]
+atlas = ExtResource("2_qemmx")
+region = Rect2(0, 0, 140, 129)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v141h"]
+atlas = ExtResource("2_qemmx")
+region = Rect2(157, 0, 134, 129)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcxv1"]
+atlas = ExtResource("2_qemmx")
+region = Rect2(328, 0, 116, 129)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g5mvk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_weq3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v141h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcxv1")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 12.0
+}]
+
+[node name="Coin" type="Area2D" unique_id=759272399 groups=["coin"]]
+scale = Vector2(0.20000038, 0.20000038)
+script = ExtResource("1_1e8qo")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=570323196]
+shape = SubResource("CircleShape2D_ixm4b")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=855895233]
+position = Vector2(5, 0)
+sprite_frames = SubResource("SpriteFrames_g5mvk")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1452444133]
+rect = Rect2(-20, -20, 40, 40)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

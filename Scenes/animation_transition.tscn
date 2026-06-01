@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://dbxwy8ri88tqa"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" unique_id=766900006]
+root_node = NodePath("../..")

@@ -1,0 +1,134 @@
+[gd_scene format=3 uid="uid://bsqh7t4hmfveg"]
+
+[ext_resource type="Script" uid="uid://cthpffbv8onls" path="res://scripts/corrida.gd" id="1_0b5on"]
+[ext_resource type="Texture2D" uid="uid://cx83djiwhb4hg" path="res://sprites/gothicvania-cemetery-files/Assets/Environment/background.png" id="2_25nx4"]
+[ext_resource type="Texture2D" uid="uid://jvq4y2giqv7p" path="res://sprites/gothicvania-cemetery-files/Assets/Environment/mountains.png" id="3_6s4uy"]
+[ext_resource type="Texture2D" uid="uid://cn8pyf7wvlexc" path="res://sprites/gothicvania-cemetery-files/Assets/Environment/graveyard.png" id="4_1o1hi"]
+[ext_resource type="PackedScene" uid="uid://bl08ue4rx4dl" path="res://PreFabs/plataformaCemiterio.tscn" id="5_6j7pa"]
+[ext_resource type="Script" uid="uid://b25ljux25ppp6" path="res://scripts/canvas_layer.gd" id="6_ql63f"]
+[ext_resource type="FontFile" uid="uid://daek2mwd874bi" path="res://fonts/at01.ttf" id="7_nn0nv"]
+[ext_resource type="Script" uid="uid://crueygo43ht4i" path="res://scripts/plataform_spawner.gd" id="8_yeabh"]
+[ext_resource type="PackedScene" uid="uid://dhp0h35btfrgg" path="res://PreFabs/coin.tscn" id="10_s1wq3"]
+[ext_resource type="PackedScene" uid="uid://cl7fgvu2sq4c8" path="res://PreFabs/spike.tscn" id="11_pdgx8"]
+[ext_resource type="PackedScene" uid="uid://dqut8nqt64qyc" path="res://PreFabs/player.tscn" id="12_e0rbh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_avj7q"]
+font = ExtResource("7_nn0nv")
+font_size = 40
+
+[node name="Node2D" type="Node2D" unique_id=1683443231]
+script = ExtResource("1_0b5on")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=1542813702]
+follow_viewport_enabled = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" unique_id=499209245]
+position = Vector2(360, 228)
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(609.875, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=767721077]
+position = Vector2(-53.72, 0)
+scale = Vector2(1.59, 1.59)
+texture = ExtResource("2_25nx4")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1008316336]
+position = Vector2(360, 228)
+motion_scale = Vector2(0.05, 0.05)
+motion_mirroring = Vector2(609.575, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" unique_id=948350237]
+position = Vector2(-205, 39)
+scale = Vector2(1.59, 1.59)
+texture = ExtResource("3_6s4uy")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" unique_id=933743274]
+position = Vector2(100, 31)
+scale = Vector2(1.59, 1.59)
+texture = ExtResource("3_6s4uy")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" unique_id=38311351]
+position = Vector2(360, 228)
+motion_mirroring = Vector2(609.875, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" unique_id=440051926]
+position = Vector2(-53.72, 104)
+scale = Vector2(1.59, 1.59)
+texture = ExtResource("4_1o1hi")
+
+[node name="Plataforma2" parent="." unique_id=271150536 instance=ExtResource("5_6j7pa")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1610490528]
+position = Vector2(360, 258)
+zoom = Vector2(1.6, 1.6)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1123457164]
+script = ExtResource("6_ql63f")
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=408470915]
+offset_left = 530.0
+offset_top = 8.0
+offset_right = 570.0
+offset_bottom = 40.0
+text = "000"
+label_settings = SubResource("LabelSettings_avj7q")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="PlataformSpawner" type="Node" parent="." unique_id=348961147]
+script = ExtResource("8_yeabh")
+platformA = ExtResource("5_6j7pa")
+coinScene = ExtResource("10_s1wq3")
+spikeScene = ExtResource("11_pdgx8")
+
+[node name="Marker2D" type="Marker2D" parent="PlataformSpawner" unique_id=2023567493]
+position = Vector2(926, 0)
+
+[node name="Marker2DPlat" type="Marker2D" parent="PlataformSpawner" unique_id=1337674104]
+position = Vector2(603, 0)
+
+[node name="Player" parent="." unique_id=1790535214 instance=ExtResource("12_e0rbh")]
+position = Vector2(80, 370)
+
+[node name="Player2" parent="." unique_id=775316775 instance=ExtResource("12_e0rbh")]
+position = Vector2(80, 110)
+player_id = 1
+
+[node name="TimerCorrida" type="Timer" parent="." unique_id=87752851]
+
+[node name="UICorrida" type="CanvasLayer" parent="." unique_id=1528413341]
+
+[node name="LabelFaseCompleta" type="Label" parent="UICorrida" unique_id=170825300]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -195.0
+offset_top = -32.0
+offset_right = 195.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_nn0nv")
+theme_override_font_sizes/font_size = 80
+text = "FASE COMPLETA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FadeOverlay" type="ColorRect" parent="UICorrida" unique_id=1352613765]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+metadata/_edit_use_anchors_ = true
+
+[node name="DeathlineBottom" type="Marker2D" parent="." unique_id=865330654]
+position = Vector2(-1036, 1351)
+
+[node name="DeathlineTop" type="Marker2D" parent="." unique_id=1708160724]
+position = Vector2(-992, -384)

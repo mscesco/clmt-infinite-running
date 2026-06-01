@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dmulbea2uwfg5"]
+
+[ext_resource type="Script" uid="uid://b82tesa1w670p" path="res://scripts/plat_checkpoint.gd" id="1_uuy3s"]
+[ext_resource type="Texture2D" uid="uid://huirhr5a3n8g" path="res://sprites/TileSet/CastleTiles.png" id="2_dumgp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ukwx4"]
+size = Vector2(16, 32)
+
+[node name="PlatCheckpoint" type="Area2D" unique_id=421512898]
+script = ExtResource("1_uuy3s")
+proxima_cena = "uid://7ygc8bepcwkp"
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2049997439]
+texture = ExtResource("2_dumgp")
+region_enabled = true
+region_rect = Rect2(167.47086, 32, 16.529144, 31.862907)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=94902160]
+shape = SubResource("RectangleShape2D_ukwx4")
+debug_color = Color(0.81632996, 0.2862968, 0.72913235, 0.41960785)

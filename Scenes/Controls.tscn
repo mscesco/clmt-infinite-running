@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://bn8cu2h6vqbtf"]
+
+[ext_resource type="PackedScene" uid="uid://ddfyu3r3cu2su" path="res://Scenes/Transition.tscn" id="1_ctrl"]
+[ext_resource type="Script" uid="uid://dj3wbv2drieru" path="res://scripts/controls.gd" id="2_ctrl"]
+[ext_resource type="AudioStream" uid="uid://vbcoyutv12cb" path="res://sprites/Musics/l-epopee-gerald-olivieri-main-version-46566-02-18.mp3" id="3_r5lgv"]
+
+[node name="Controls" type="Control" unique_id=436828471]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_ctrl")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1411332623]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05, 0.05, 0.1, 1)
+
+[node name="Title" type="Label" parent="." unique_id=414881869]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 60.0
+offset_right = 776.0
+offset_bottom = 110.0
+text = "CONTROLES"
+horizontal_alignment = 1
+
+[node name="Panel" type="PanelContainer" parent="." unique_id=395186871]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 130.0
+offset_right = 950.0
+offset_bottom = 530.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=1723210847]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=340313444]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="LabelP1" type="Label" parent="Panel/MarginContainer/VBoxContainer" unique_id=786851584]
+layout_mode = 2
+text = "--- JOGADOR 1 ---"
+horizontal_alignment = 1
+
+[node name="LabelP1Jump" type="Label" parent="Panel/MarginContainer/VBoxContainer" unique_id=1582962446]
+layout_mode = 2
+text = "Pular:        W"
+
+[node name="Separator1" type="HSeparator" parent="Panel/MarginContainer/VBoxContainer" unique_id=275493748]
+layout_mode = 2
+
+[node name="LabelP2" type="Label" parent="Panel/MarginContainer/VBoxContainer" unique_id=1105238533]
+layout_mode = 2
+text = "--- JOGADOR 2 ---"
+horizontal_alignment = 1
+
+[node name="LabelP2Jump" type="Label" parent="Panel/MarginContainer/VBoxContainer" unique_id=25389127]
+layout_mode = 2
+text = "Pular:        Seta para Cima  /  Botao A (Controle)"
+
+[node name="Separator2" type="HSeparator" parent="Panel/MarginContainer/VBoxContainer" unique_id=67712736]
+layout_mode = 2
+
+[node name="LabelGeneral" type="Label" parent="Panel/MarginContainer/VBoxContainer" unique_id=413770610]
+layout_mode = 2
+text = "--- GERAL ---"
+horizontal_alignment = 1
+
+[node name="LabelEsc" type="Label" parent="Panel/MarginContainer/VBoxContainer" unique_id=1032229920]
+layout_mode = 2
+text = "Pausar / Sair: ESC"
+
+[node name="BackButton" type="Button" parent="." unique_id=1477394224]
+layout_mode = 0
+offset_left = 476.0
+offset_top = 555.0
+offset_right = 676.0
+offset_bottom = 590.0
+text = "Voltar ao Menu"
+
+[node name="Transition" parent="." unique_id=549240858 instance=ExtResource("1_ctrl")]
+visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1584659543]
+stream = ExtResource("3_r5lgv")
+autoplay = true

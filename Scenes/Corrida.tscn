@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://7ygc8bepcwkp"]
+
+[ext_resource type="Script" uid="uid://cthpffbv8onls" path="res://scripts/corrida.gd" id="1_stwbk"]
+[ext_resource type="Shader" uid="uid://bq8iqnsriihyf" path="res://shader/bakcground.gdshader" id="2_etu58"]
+[ext_resource type="PackedScene" uid="uid://dpa6wemngpmor" path="res://PreFabs/plataforma.tscn" id="2_kliab"]
+[ext_resource type="Texture2D" uid="uid://cq1yvqx1sf4rv" path="res://sprites/Background/Cenario2dCastelo.png" id="2_stwbk"]
+[ext_resource type="PackedScene" uid="uid://dqut8nqt64qyc" path="res://PreFabs/player.tscn" id="3_163gy"]
+[ext_resource type="Script" uid="uid://b25ljux25ppp6" path="res://scripts/canvas_layer.gd" id="5_fwcuv"]
+[ext_resource type="Script" uid="uid://crueygo43ht4i" path="res://scripts/plataform_spawner.gd" id="6_163gy"]
+[ext_resource type="FontFile" uid="uid://daek2mwd874bi" path="res://fonts/at01.ttf" id="7_ol3k4"]
+[ext_resource type="PackedScene" uid="uid://dhp0h35btfrgg" path="res://PreFabs/coin.tscn" id="8_evtc5"]
+[ext_resource type="PackedScene" uid="uid://cl7fgvu2sq4c8" path="res://PreFabs/spike.tscn" id="9_fwcuv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ol3k4"]
+shader = ExtResource("2_etu58")
+
+[sub_resource type="LabelSettings" id="LabelSettings_avj7q"]
+font = ExtResource("7_ol3k4")
+font_size = 40
+
+[node name="Node2D" type="Node2D" unique_id=1683443231]
+script = ExtResource("1_stwbk")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=170932307]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_ol3k4")
+offset_right = 927.6666
+offset_bottom = 506.0
+texture = ExtResource("2_stwbk")
+expand_mode = 1
+
+[node name="Plataforma" parent="." unique_id=271150536 instance=ExtResource("2_kliab")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1610490528]
+position = Vector2(360, 258)
+zoom = Vector2(1.6, 1.6)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1123457164]
+script = ExtResource("5_fwcuv")
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=408470915]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 32.0
+grow_horizontal = 2
+text = "000"
+label_settings = SubResource("LabelSettings_avj7q")
+horizontal_alignment = 1
+
+[node name="PlataformSpawner" type="Node" parent="." unique_id=348961147]
+script = ExtResource("6_163gy")
+platformA = ExtResource("2_kliab")
+coinScene = ExtResource("8_evtc5")
+spikeScene = ExtResource("9_fwcuv")
+
+[node name="Marker2D" type="Marker2D" parent="PlataformSpawner" unique_id=2023567493]
+position = Vector2(926, 0)
+
+[node name="Marker2DPlat" type="Marker2D" parent="PlataformSpawner" unique_id=1337674104]
+position = Vector2(603, 0)
+
+[node name="Player" parent="." unique_id=1790535214 instance=ExtResource("3_163gy")]
+position = Vector2(80, 370)
+
+[node name="Player2" parent="." unique_id=775316775 instance=ExtResource("3_163gy")]
+position = Vector2(80, 110)
+player_id = 1
+
+[node name="TimerCorrida" type="Timer" parent="." unique_id=87752851]
+
+[node name="UICorrida" type="CanvasLayer" parent="." unique_id=1528413341]
+
+[node name="LabelFaseCompleta" type="Label" parent="UICorrida" unique_id=170825300]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -195.0
+offset_top = -32.0
+offset_right = 195.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_ol3k4")
+theme_override_font_sizes/font_size = 80
+text = "FASE COMPLETA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FadeOverlay" type="ColorRect" parent="UICorrida" unique_id=1352613765]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="DeathlineBottom" type="Marker2D" parent="." unique_id=865330654]
+position = Vector2(-1036, 1351)
+
+[node name="DeathlineTop" type="Marker2D" parent="." unique_id=1708160724]
+position = Vector2(-992, -384)
