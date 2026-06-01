@@ -1,0 +1,7 @@
+# Cache do Godot 4 (regenerado ao abrir o projeto)
+.godot/
+
+# Caches e logs diversos
+.import/
+*.translation
+mono_crash.*.json
