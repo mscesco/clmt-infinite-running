@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://b6pj8fslrixwc"]
+
+[ext_resource type="Texture2D" uid="uid://d0rs1kpb15ubx" path="res://sprites/Background/MenuInicio.png" id="1_klylv"]
+[ext_resource type="Script" uid="uid://c0ddyqo13oj32" path="res://scripts/title_screen.gd" id="1_p3fck"]
+[ext_resource type="PackedScene" uid="uid://ddfyu3r3cu2su" path="res://Scenes/Transition.tscn" id="2_twnyg"]
+[ext_resource type="AudioStream" uid="uid://vbcoyutv12cb" path="res://sprites/Musics/l-epopee-gerald-olivieri-main-version-46566-02-18.mp3" id="3_4gxqj"]
+
+[sub_resource type="Theme" id="Theme_p3fck"]
+
+[node name="TitleScreen" type="Control" unique_id=783130867]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p3fck")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=251481589]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_klylv")
+expand_mode = 2
+
+[node name="Exit" type="Button" parent="." unique_id=1707070294]
+layout_mode = 0
+offset_left = 537.0
+offset_top = 413.0
+offset_right = 615.0
+offset_bottom = 450.0
+size_flags_horizontal = 4
+flat = true
+
+[node name="Controlls" type="Button" parent="." unique_id=815027199]
+layout_mode = 0
+offset_left = 486.0
+offset_top = 372.0
+offset_right = 666.0
+offset_bottom = 403.0
+flat = true
+
+[node name="Play" type="Button" parent="." unique_id=97616282]
+layout_mode = 0
+offset_left = 518.0
+offset_top = 329.0
+offset_right = 637.0
+offset_bottom = 356.0
+size_flags_horizontal = 4
+theme = SubResource("Theme_p3fck")
+flat = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1076065071]
+stream = ExtResource("3_4gxqj")
+autoplay = true
+
+[node name="Transition" parent="." unique_id=551134138 instance=ExtResource("2_twnyg")]
+visible = false
